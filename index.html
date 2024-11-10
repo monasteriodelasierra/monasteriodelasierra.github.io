@@ -2,27 +2,33 @@
 <html>
 <head>
   <style>
-  div.header {
-    background-color: red;
-    width: 100%;
-    height: 15%;
-  }
-  div.2pa {
-    background-color: blue;
-    width: 50%;
-    height: 15%;
-  }
-  @media (max-width: 600px) {
-  div.pa {
-    background-color: purple;
-    width: 100%;
-  }
-}
+    div.header {
+      background-color: red;
+      width: 100%;
+      height: 15%;
+    }
+    div.pa {
+      background-color: blue;
+      width: 50%;
+      min-width: 800px;
+      height: 15%;
+    }
+
+    /* Cambia el color cuando el ancho de la pantalla es de 600px o menos */
+    @media (max-width: 600px) {
+      div.header {
+        background-color: orange;
+      }
+      div.pa {
+        background-color: purple;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
-<div class="header"></div>
-<div class="2pa"></div>
-<div class="2pa"></div>
+  <div class="header"></div>
+  <div class="pa"></div>
+  <div class="pa"></div>
 </body>
 </html>
