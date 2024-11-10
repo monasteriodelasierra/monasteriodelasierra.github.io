@@ -40,9 +40,14 @@
       width: 50%;
       height: 100%;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      color: #C488E7; /* Color del texto */
+      padding: 10px;
+      text-align: center;
+      font-size: 1.2em;
     }
 
     /* Imagen en el primer two-pa */
@@ -91,6 +96,25 @@
       max-width: 600px;
       font-size: 1.2em;
       color: #C488E7;
+    }
+
+    /* Nuevo estilo para el enlace en el div final */
+    .link-section {
+      background-color: #2C303A;
+      padding: 20px;
+      text-align: center;
+      color: #C488E7;
+      font-size: 1.3em;
+    }
+
+    .link-section a {
+      color: #C488E7;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .link-section a:hover {
+      text-decoration: underline;
     }
 
     /* Ajustes en pantallas grandes */
@@ -149,23 +173,25 @@
 
   <!-- Contenedor flex para los elementos "two-pa" -->
   <div class="container">
-    <!-- Primer div con una imagen centrada -->
+    <!-- Primer div con texto y una imagen centrada -->
     <div class="two-pa">
+      <p>Mapa de las Ventanas del Tiempo</p>
       <img src="src/mapa.png" alt="Mapa">
     </div>
 
-    <!-- Segundo div con una cuadrícula de 3x3 imágenes -->
+    <!-- Segundo div con texto y una cuadrícula de 3x3 imágenes -->
     <div class="two-pa">
+      <p>Selecciona una de las cámaras para ver las imágenes</p>
       <div class="grid">
-        <a href="mdls01.html" ><img src="src/cam1.png" alt="MDLS-01"></a>
-        <a href="mdls02.html" ><img src="src/cam2.png" alt="MDLS-02"></a>
-        <a href="mdls03.html" ><img src="src/cam3.png" alt="MDLS-03"></a>
-        <a href="mdls04.html" ><img src="src/cam4.png" alt="MDLS-04"></a>
-        <a href="mdls05.html" ><img src="src/cam5.png" alt="MDLS-05"></a>
-        <a href="mdls06.html" ><img src="src/cam6.png" alt="MDLS-06"></a>
-        <a href="mdls07.html" ><img src="src/cam7.png" alt="MDLS-07"></a>
-        <a href="mdls08.html" ><img src="src/cam8.png" alt="MDLS-08"></a>
-        <a href="mdls09.html" ><img src="src/cam9.png" alt="MDLS-09"></a>
+        <a href="mdls01.html"><img src="src/cam1.png" alt="MDLS-01"></a>
+        <a href="mdls02.html"><img src="src/cam2.png" alt="MDLS-02"></a>
+        <a href="mdls03.html"><img src="src/cam3.png" alt="MDLS-03"></a>
+        <a href="mdls04.html"><img src="src/cam4.png" alt="MDLS-04"></a>
+        <a href="mdls05.html"><img src="src/cam5.png" alt="MDLS-05"></a>
+        <a href="mdls06.html"><img src="src/cam6.png" alt="MDLS-06"></a>
+        <a href="mdls07.html"><img src="src/cam7.png" alt="MDLS-07"></a>
+        <a href="mdls08.html"><img src="src/cam8.png" alt="MDLS-08"></a>
+        <a href="mdls09.html"><img src="src/cam9.png" alt="MDLS-09"></a>
       </div>
     </div>
   </div>
@@ -178,6 +204,11 @@
       Esto permite observar los cambios en el entorno a lo largo de las estaciones y de los años. Cualquier persona puede colaborar tomando 
       una foto desde el soporte y enviándola al correo indicado en el cartel. La colección completa de imágenes está disponible en esta página web.
     </p>
+  </div>
+
+  <!-- Nuevo div final con enlace -->
+  <div class="link-section">
+    <p>Descubre más y síguenos en nuestro <a href="https://linktr.ee/monasteriodelasierra" target="_blank">Linktree</a></p>
   </div>
 
 </body>
