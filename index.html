@@ -17,8 +17,9 @@
     /* Contenedor flex para las cajas "two-pa" */
     .container {
       display: flex;
-      justify-content: center; /* Centra los elementos dentro del contenedor */
+      justify-content: center;
       height: 100vh; /* Ocupa toda la altura de la ventana */
+      flex-wrap: wrap; /* Permite que los elementos se ajusten automáticamente */
     }
 
     div.two-pa {
@@ -39,7 +40,7 @@
 
       /* Cambia la dirección del contenedor flex a columna en pantallas pequeñas */
       .container {
-        flex-direction: column;
+        flex-direction: column; /* Apila los elementos verticalmente */
       }
     }
   </style>
