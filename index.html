@@ -13,6 +13,15 @@
       background-color: #C488E7;
       width: 100%;
       height: 15%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Imagen en el header */
+    .header img {
+      height: 80%; /* Ajusta el tamaño de la imagen en relación al alto del header */
+      object-fit: contain;
     }
 
     /* Contenedor flex para las cajas "two-pa" */
@@ -30,7 +39,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden; /* Para asegurar que las imágenes no se desborden */
+      overflow: hidden;
     }
 
     /* Imagen en el primer two-pa */
@@ -46,7 +55,7 @@
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 1fr);
       gap: 5px;
-      width: 80%; /* Ajuste del tamaño total de la cuadrícula */
+      width: 80%;
       height: 80%;
     }
 
@@ -60,6 +69,9 @@
     @media (max-width: 600px) {
       div.header {
         height: 10%;
+      }
+      .header img {
+        height: 60%;
       }
       div.two-pa {
         width: 100%;
@@ -76,27 +88,30 @@
   </style>
 </head>
 <body>
-  <div class="header"></div>
+  <!-- Header con imagen centrada -->
+  <div class="header">
+    <img src="src/titulo.png" alt="Ventanas del Tiempo">
+  </div>
 
   <!-- Contenedor flex para los elementos "two-pa" -->
   <div class="container">
     <!-- Primer div con una imagen centrada -->
     <div class="two-pa">
-      <img src="ruta_de_la_imagen.jpg" alt="Imagen principal">
+      <img src="ruta_de_la_imagen.jpg" alt="Mapa">
     </div>
 
     <!-- Segundo div con una cuadrícula de 3x3 imágenes -->
     <div class="two-pa">
       <div class="grid">
-        <img src="ruta_imagen1.jpg" alt="Imagen 1">
-        <img src="ruta_imagen2.jpg" alt="Imagen 2">
-        <img src="ruta_imagen3.jpg" alt="Imagen 3">
-        <img src="ruta_imagen4.jpg" alt="Imagen 4">
-        <img src="ruta_imagen5.jpg" alt="Imagen 5">
-        <img src="ruta_imagen6.jpg" alt="Imagen 6">
-        <img src="ruta_imagen7.jpg" alt="Imagen 7">
-        <img src="ruta_imagen8.jpg" alt="Imagen 8">
-        <img src="ruta_imagen9.jpg" alt="Imagen 9">
+        <img src="ruta_imagen1.jpg" alt="MDLS-01">
+        <img src="ruta_imagen2.jpg" alt="MDLS-02">
+        <img src="ruta_imagen3.jpg" alt="MDLS-03">
+        <img src="ruta_imagen4.jpg" alt="MDLS-04">
+        <img src="ruta_imagen5.jpg" alt="MDLS-05">
+        <img src="ruta_imagen6.jpg" alt="MDLS-06">
+        <img src="ruta_imagen7.jpg" alt="MDLS-07">
+        <img src="ruta_imagen8.jpg" alt="MDLS-08">
+        <img src="ruta_imagen9.jpg" alt="MDLS-09">
       </div>
     </div>
   </div>
