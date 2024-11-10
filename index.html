@@ -2,11 +2,13 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Montserrat:wght@400;700&family=Lora:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* Asegura que html y body tengan una altura del 100% */
     html, body {
       height: 100%;
       margin: 0;
+      font-family: 'Roboto', sans-serif; /* Cambia 'Roboto' a otra fuente para probar */
     }
 
     div.header {
@@ -78,7 +80,7 @@
     }
 
     .footer-content img {
-      width: 300px; /* Aumenta el tamaño de la imagen */
+      width: 300px;
       height: auto;
       margin-right: 20px;
     }
@@ -87,6 +89,16 @@
       max-width: 600px;
       font-size: 1.2em;
       color: #C488E7;
+    }
+
+    /* Ajustes en pantallas grandes */
+    @media (min-width: 1024px) {
+      .footer-content img {
+        width: 400px; /* Imagen más grande en pantallas grandes */
+      }
+      .footer-content p {
+        font-size: 1.5em; /* Texto más grande en pantallas grandes */
+      }
     }
 
     /* Ajustes en pantallas pequeñas */
