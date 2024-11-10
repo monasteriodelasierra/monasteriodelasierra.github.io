@@ -29,18 +29,15 @@
 
     /* Imagen en el header */
     .header img {
-      height: 80%;
+      max-height: 125px;
+      max-width: 80%;  /* Limita el ancho al 100% del header */
       object-fit: contain;
     }
-
 
     /* Ajustes en pantallas pequeñas */
     @media (max-width: 600px) {
       div.header {
         height: 10%;
-      }
-      .header img {
-        height: 60%;
       }
     }
   </style>
@@ -48,7 +45,9 @@
 <body>
   <!-- Header con imagen centrada -->
   <div class="header">
-    <a href="index.html" ><img src="src/mdls02.png" alt="Ventanas del Tiempo"></a>
+    <a href="index.html">
+      <img src="src/mdls02.png" alt="MDLS-02">
+    </a>
   </div>
 
   <div class="fondo">
