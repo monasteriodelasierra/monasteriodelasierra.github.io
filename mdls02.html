@@ -16,28 +16,57 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden; /* oculta cualquier parte de la imagen que exceda el contenedor */
+    }
+
+    /* Imagen en el header */
+    .header img {
+      width: auto; /* mantiene la relación de aspecto */
+      height: auto;
+      max-width: 50%;
+      max-height: 200px;
+      object-fit: contain;
+      margin-left: 25%;
+    }
+
+    div.bar {
+      background-color: #C488E7;
+      width: 100%;
+      height: 6%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden; /* oculta cualquier parte de la imagen que exceda el contenedor */
+    }
+
+    /* Imagen en el header */
+    .bar img {
+      width: auto; /* mantiene la relación de aspecto */
+      height: auto;
+      max-width: 50%;
+      max-height: 80px;
+      object-fit: cover;
+      margin-left: 25%;
     }
 
     div.fondo {
       background-color: #2C303A;
       width: 100%;
-      height: 85%;
+      height: 79%;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    /* Imagen en el header */
-    .header img {
-      max-height: 125px;
-      max-width: 80%;  /* Limita el ancho al 100% del header */
-      object-fit: contain;
-    }
+
 
     /* Ajustes en pantallas pequeñas */
     @media (max-width: 600px) {
       div.header {
         height: 10%;
+      }
+      div.fondo {
+        height: 84%;
       }
     }
   </style>
@@ -45,8 +74,19 @@
 <body>
   <!-- Header con imagen centrada -->
   <div class="header">
-    <a href="index.html">
+    <a >
       <img src="src/mdls02.png" alt="MDLS-02">
+    </a>
+  </div>
+  <div class="bar">
+    <a href="mdls01.html">
+      <img src="src/anterior.png" alt="Ventana Anterior">
+    </a>
+    <a href="index.html">
+      <img src="src/principal.png" alt="Página Principal">
+    </a>
+    <a href="mdls03.html">
+      <img src="src/siguiente.png" alt="Ventana Siguiente">
     </a>
   </div>
 
