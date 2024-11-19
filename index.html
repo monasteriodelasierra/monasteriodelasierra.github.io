@@ -48,8 +48,16 @@
       overflow: hidden;
     }
 
+
     /* Imagen en el primer two-pa */
     .two-pa:first-child img {
+      width: 80%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* Imagen en el segunda two-pa */
+    .two-pa:last-child img {
       width: 80%;
       height: auto;
       object-fit: contain;
@@ -63,7 +71,20 @@
       gap: 5px;
       width: 60%;
       height: 60%;
-      margin-top: -25%;
+      margin-top: 0%;
+    }
+
+    .grid-title {
+      width: 100%;
+      text-align: center; /* Centra la imagen horizontalmente */
+      margin-top: 0%;
+      margin-bottom: 20px; /* Añade espacio entre la imagen y la cuadrícula */
+    }
+
+    .grid-title img {
+      width: 60%; /* Ajusta el tamaño de la imagen */
+      max-width: 600px; /* Tamaño máximo */
+      height: auto; /* Mantén las proporciones */
     }
 
     .grid img {
@@ -119,14 +140,20 @@
         height: 50%;
       }
       div.two-pa img {
-        max-height: 340px;
+        max-height: 320px;
+        max-width: 320px;
       }
       .container {
         height: 90%;
         flex-direction: column;
       }
+      .grid-title {
+        margin-top: -5%;
+      }
       .grid {
         gap: 2px;
+        max-height: 320px;
+        max-width: 320px;
       }
       .grid img {
         max-width: 100px;
@@ -154,13 +181,15 @@
   <div class="container">
     <!-- Primer div con una imagen centrada -->
     <div class="two-pa">
-      <h2 style="color: #C488E7; text-align: center; width: 100%; margin: 20px 0 10px 0; max-width: 90%;">Mapa de las Ventanas del Tiempo</h2>
+      <img src="src/titulo-mapa.png" alt="Mapa de las Ventanas del Tiempo" style="margin-bottom: 20px;">
       <img src="src/mapa.jpg" alt="Mapa">
     </div>
 
     <!-- Segundo div con una cuadrícula de 3x3 imágenes -->
     <div class="two-pa">
-      <h2 style="color: #C488E7; text-align: center; width: 100%; margin: 0 0 10px 0; margin-bottom: 25%; max-width: 90%;">Selecciona una ventana para ver las imágenes</h2>
+      <div class="grid-title">
+        <img src="src/titulo-ventanas.png" alt="Selecciona una Ventana para ver las imágenes">
+      </div>
       <div class="grid">
         <a href="mdls01.html" ><img src="src/cam1.png" alt="MDLS-01"></a>
         <a href="mdls02.html" ><img src="src/cam2.png" alt="MDLS-02"></a>
