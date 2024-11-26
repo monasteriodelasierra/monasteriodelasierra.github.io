@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>MDLS-03</title>
+  <link rel="stylesheet" href="./style.css">
   <link rel="icon" href="src/favicon.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
@@ -26,7 +27,7 @@
       width: auto; /* mantiene la relación de aspecto */
       height: auto;
       max-width: 50%;
-      max-height: 200px;
+      max-height: 180px;
       object-fit: contain;
       margin-left: 25%;
     }
@@ -64,9 +65,15 @@
 
 
     /* Ajustes en pantallas pequeñas */
-    @media (max-width: 600px) {
+    @media (max-height: 600px) {
       div.header {
         height: 10%;
+      }
+      .header img {
+        max-height: 80px;
+      }
+      .bar img {
+        max-height: 40px;
       }
       div.fondo {
         height: 84%;
@@ -94,7 +101,28 @@
   </div>
 
   <div class="fondo">
-
+    <div id="chronobar">
+      <script>
+        const pathToFiles = 'fotos/MDLS-03/';
+        const piclist = [
+          '2024-08-13_Sergio Garcia Esteban.jpg',
+          '2024-08-14_David Esteban Gonzalez.jpg',
+          '2024-08-26_Rosa Heras Moreno.jpg'
+        ];
+      </script>
+      <div class="date">0000-00-00</div>
+      <div class="pics"></div>
+      <div class="control-bar">
+        <div class="control-bttn">
+          <div class="pauseplay"></div>
+        </div>
+        <div class="time-bar">
+          <span class="time-rail"></span>
+          <span class="time-track"><mark></mark></span>
+        </div>
+      </div>
+      <script src="./loader.js"></script>
+    </div>
   </div>
 </body>
 </html>

@@ -1,0 +1,183 @@
+
+/***********************
+ * OUTSIDE THE BOX CSS *
+ ***********************/
+.box-centered {
+  width: 90%;
+  height: 500px;
+  margin: auto;
+  padding: 50px 0;
+  background-color: #ccc;
+}
+
+/***********************
+ *   STRUCTURAL CSS    *
+ ***********************/
+#chronobar {
+  width: 800px;
+  height: 600px;
+  position: relative;
+  display: flex;
+  margin: auto;
+
+  background-color: black;
+  font-family: 'Montserrat';
+
+  /* BORRAR */
+  border: 10px solid #C488E7;
+}
+
+#chronobar .pics {
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+#chronobar .control-bar {
+  position: absolute;
+  display: flex;
+  height: 50px;
+  padding: 0 15px;
+
+  align-items: center;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#chronobar .control-bttn {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+  align-content: center;
+  background-color: lightgray;
+}
+
+#chronobar .time-bar {
+  flex-grow: 1;
+  height: 10px;
+  padding: 5px 0;
+  position: relative;
+  margin: 0 0 0 20px;
+
+  .time-rail {
+    width: 100%;
+    height: inherit;
+    position: absolute;
+
+    opacity: 0.3;
+    border-radius: 5px;
+    background-color: black;
+  }
+
+  .time-track {
+    height: inherit;
+    position: absolute;
+
+    border-radius: 5px;
+    background-color: #C488E7;
+  }
+
+  .time-mark {
+    height: inherit;
+    position: absolute;
+    border-left: solid 4px rgb(255, 208, 0);
+
+    /*&:not(:first-of-type):not(:last-of-type) {
+      border-left: solid 4px rgb(196, 240, 36);
+    }*/
+  }
+}
+
+#chronobar .date {
+  position: absolute;
+  font-weight: bold;
+  padding: 6px 12px;
+  right: 0;
+  top: 0;
+  color:#000000;
+  background-color: #C488E7;
+  opacity: 0.75;
+}
+
+#chronobar .disabled {
+  display: none !important;
+}
+
+/***********************
+ *    SPECIFIC CSS     *
+ ***********************/
+#chronobar .control-bttn {
+  .pauseplay {
+    width: 0;
+    height: 20px;
+    margin-left: 14px;
+    box-sizing: border-box;
+    transition: 100ms all ease;
+
+    /* play state */
+    border-style: solid;
+    border-width: 10px 0 10px 15px;
+    border-color: transparent transparent transparent rgb(75, 197, 59);
+
+    &.paused {
+      margin-left: 10px;
+      border-style: double;
+      border-width: 0 0 0 20px;
+      border-color: transparent transparent transparent crimson;
+    }
+  }
+
+  &:hover .pauseplay{
+    border-color: transparent transparent transparent darkgray;
+  }
+}
+
+#chronobar .time-track mark {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  transform: translate(50%, -50%);
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  transition: background-color 0.3s ease;
+  z-index: 5;
+
+  &:hover {
+    background-color: lightgray;
+  }
+
+}
+
+    /* Ajustes en pantallas pequeñas */
+    @media (max-height: 800px)  {
+      #chronobar {
+        height: 90%;
+        width: 60%;
+      }
+    }
+    /* Ajustes en pantallas pequeñas */
+    @media (max-width: 900px) {
+      #chronobar {
+        width: 90%;
+        height: 60%;
+      }
+    }
+    /* Ajustes en pantallas pequeñas */
+    @media (max-width: 900px) and (max-height: 800px) and (min-aspect-ratio: 1/1){
+      #chronobar {
+        width: 60%;
+        height: 90%;
+      }
+    }
