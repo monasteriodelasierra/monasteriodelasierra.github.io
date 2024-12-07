@@ -2,6 +2,7 @@
 
 const chronobarBox = document.getElementById('chronobar');
 chronobarBox.date = chronobarBox.querySelector('.date');
+chronobarBox.autor = chronobarBox.querySelector('.autor');
 chronobarBox.pics = chronobarBox.querySelector('.pics');
 chronobarBox.bar = chronobarBox.querySelector('.time-bar');
 chronobarBox.bar.track = chronobarBox.bar.querySelector('.time-track');
@@ -22,7 +23,7 @@ piclist.forEach((picname, idx) => {
 
   // img creation
   let pic = document.createElement('img');
-  pic.src = picPath; pic.picAuthor = picinfo[1];
+  pic.src = picPath; pic.picAuthor = picinfo[1].split('.')[0];
   pic.picDate = dateObj; pic.picDateStr = picinfo[0];
   if(idx != 0) pic.classList.add('disabled');
   picObjs.push(pic);
@@ -34,6 +35,7 @@ piclist.forEach((picname, idx) => {
 let marks = [];
 picObjs.sort((a, b) => a.picDate - b.picDate);
 chronobarBox.date.innerText = picObjs[0].picDateStr;
+chronobarBox.autor.innerText = picObjs[0].picAuthor;
 {
   let init = picObjs[0].picDate,
       end = picObjs[picObjs.length - 1].picDate;
@@ -68,6 +70,7 @@ function togglePower() {
       active.classList.toggle('disabled');
       chronobarBox.bar.track.style.width = nextPic.mark.style.left;
       chronobarBox.date.innerText = nextPic.picDateStr;
+      chronobarBox.autor.innerText = nextPic.picAuthor;
     }, 1000);
   }
 }
@@ -94,6 +97,7 @@ function changeTimeBar(newX = 0) {
   mark.pic.classList.toggle('disabled');
   chronobarBox.bar.track.style.width = mark.style.left;
   chronobarBox.date.innerText = mark.pic.picDateStr;
+  chronobarBox.autor.innerText = mark.pic.picAuthor;
 }
 
 function onMouseDown(ev) { isDragging = true; ev.preventDefault();}
