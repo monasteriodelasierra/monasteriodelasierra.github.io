@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirigiendo...</title>
+    <script>
+        // Obtener la parte final de la URL
+        let path = window.location.pathname.split('/').pop();
+
+        // Redirigir si hay una subpágina en la URL
+        if (path && path !== "404.html") {
+            window.location.href = "/visor.html?ventana=" + path;
+        } else {
+            document.write("<h1>Página no encontrada</h1>");
+        }
+    </script>
+</head>
+<body>
+    <p>Si no eres redirigido automáticamente, <a id="redirectLink" href="#">haz clic aquí</a>.</p>
+    <script>
+        document.getElementById("redirectLink").href = "/visor.html?ventana=" + path;
+    </script>
+</body>
+</html>

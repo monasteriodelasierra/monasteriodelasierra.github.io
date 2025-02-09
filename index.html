@@ -116,7 +116,12 @@
       font-size: 1.2em;
       color: #C488E7;
     }
-
+    @font-face {
+    font-family: 'Gilroy';
+    src: url('Gilroy-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    }
 
     /* Ajustes en pantallas pequeñas */
     @media (max-width: 600px) {
@@ -172,32 +177,32 @@
 <body>
   <!-- Header con imagen centrada -->
   <div class="header">
-    <img src="src/titulo.png" alt="Ventanas del Tiempo">
+    <p style="text-align: center; padding-left: 10px; padding-right: 10px; color: #1a1d22; font-family: 'Gilroy', sans-serif; font-weight: bold; font-size: 2.3em;">Ventanas del Tiempo</p>
   </div>
 
   <!-- Contenedor flex para los elementos "two-pa" -->
   <div class="container">
     <!-- Primer div con una imagen centrada -->
     <div class="two-pa">
-      <img src="src/titulo-mapa.png" alt="Mapa de las Ventanas del Tiempo" style="margin-bottom: 15px;">
+      <p style="text-align: center; padding-left: 20px; padding-right: 20px; color: #C488E7; font-family: 'Gilroy', sans-serif;  font-size: 1.6em;">Mapa de las Ventanas del Tiempo</p>
       <img src="src/mapa.jpg" alt="Mapa">
     </div>
 
     <!-- Segundo div con una cuadrícula de 3x3 imágenes -->
     <div class="two-pa">
-      <div class="grid-title">
-        <img class="titulo-ventanas" src="src/titulo-ventanas.png" alt="Selecciona una Ventana para ver las imágenes">
+      <div style="text-align: center; padding-left: 20px; padding-right: 20px; color: #C488E7; font-family: 'Gilroy', sans-serif;  font-size: 1.3em;">
+        <p>Selecciona una Ventana para ver las imágenes</p>
       </div>
       <div class="grid">
-        <a href="mdls01.html" ><img src="src/cam1.png" alt="MDLS-01"></a>
-        <a href="mdls02.html" ><img src="src/cam2.png" alt="MDLS-02"></a>
-        <a href="mdls03.html" ><img src="src/cam3.png" alt="MDLS-03"></a>
-        <a href="mdls04.html" ><img src="src/cam4.png" alt="MDLS-04"></a>
-        <a href="mdls05.html" ><img src="src/cam5.png" alt="MDLS-05"></a>
-        <a href="mdls06.html" ><img src="src/cam6.png" alt="MDLS-06"></a>
-        <a href="mdls07.html" ><img src="src/cam7.png" alt="MDLS-07"></a>
-        <a href="mdls08.html" ><img src="src/cam8.png" alt="MDLS-08"></a>
-        <a href="mdls09.html" ><img src="src/cam9.png" alt="MDLS-09"></a>
+        <a href="visor.html?ventana=MDLS-01" ><img src="src/cam1.png" alt="MDLS-01"></a>
+        <a href="visor.html?ventana=MDLS-02" ><img src="src/cam2.png" alt="MDLS-02"></a>
+        <a href="visor.html?ventana=MDLS-03" ><img src="src/cam3.png" alt="MDLS-03"></a>
+        <a href="visor.html?ventana=MDLS-04" ><img src="src/cam4.png" alt="MDLS-04"></a>
+        <a href="visor.html?ventana=MDLS-05" ><img src="src/cam5.png" alt="MDLS-05"></a>
+        <a href="visor.html?ventana=MDLS-06" ><img src="src/cam6.png" alt="MDLS-06"></a>
+        <a href="visor.html?ventana=MDLS-07" ><img src="src/cam7.png" alt="MDLS-07"></a>
+        <a href="visor.html?ventana=MDLS-08" ><img src="src/cam8.png" alt="MDLS-08"></a>
+        <a href="visor.html?ventana=MDLS-09" ><img src="src/cam9.png" alt="MDLS-09"></a>
       </div>
     </div>
   </div>
@@ -205,7 +210,7 @@
   <!-- Bloque responsive con imagen y texto al final -->
   <div class="footer-content">
     <img src="src/foto.jpg" alt="Descripción de la imagen">
-    <p>
+    <p style="text-align: center; padding: 5px; background-color: #2C303A; color: #C488E7; font-family: 'Gilroy', sans-serif;  font-size: 1.1em;">
       Una Ventana del Tiempo es un soporte atado a un árbol, diseñado para capturar fotografías siempre desde el mismo encuadre. 
       Esto permite observar los cambios en el entorno a lo largo de las estaciones y de los años. Cualquier persona puede colaborar tomando 
       una foto desde el soporte y enviándola al correo indicado en el cartel. La colección completa de imágenes está disponible en esta página web.
@@ -213,7 +218,7 @@
   </div>
 
   <!-- Div final con texto centrado y enlace -->
-  <div style="text-align: center; padding: 20px; background-color: #2C303A; color: #C488E7;">
+  <div style="text-align: center; padding: 20px; background-color: #2C303A; color: #C488E7; font-family: 'Gilroy', sans-serif;  font-size: 1em;">
     <p>Para más información, visita nuestro <a href="https://linktr.ee/monasteriodelasierra" target="_blank" style="color: #C488E7; text-decoration: underline;">Linktree</a>.</p>
   </div>
 

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MDLS-01</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="src/favicon.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body { height: 100%; margin: 0; }
+    div.header, div.bar { background-color: #C488E7; width: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+    .header { height: 15%; }
+    .header img, .bar img { width: auto; height: auto; max-width: 50%; max-height: 180px; object-fit: contain; margin-left: 25%; }
+    .bar { height: 6%; display: grid; grid-template-columns: repeat(3, 1fr); justify-items: center; }
+    .bar img { max-height: 80px; }
+    div.fondo { background-color: #2C303A; width: 100%; height: 79%; display: flex; justify-content: center; align-items: center; }
+    #header-title {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: bold;
+    font-size: 4em;
+    }
+    #volver {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+    }
+    @font-face {
+    font-family: 'Gilroy';
+    src: url('Gilroy-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    }
+    @media (max-height: 600px) { .header { height: 10%; } .header img { max-height: 80px; } .bar img { max-height: 40px; } .fondo { height: 84%; } }
+  </style>
+</head>
+<body>
+  <div class="header" id="header-title">MDLS-01</div>
+  <div class="bar">
+    <a href="index.html" id="volver">Volver a Inicio</a>
+  </div>
+  <div class="fondo">
+    <div id="chronobar">
+      <div class="date">0000-00-00</div>
+      <div class="autor"></div>
+      <div class="pics"></div>
+      <div class="control-bar">
+        <div class="control-bttn"><div class="pauseplay"></div></div>
+        <div class="time-bar">
+          <span class="time-rail"></span>
+          <span class="time-track"><mark></mark></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Función para obtener parámetros de la URL
+    function getParameterByName(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // Obtener el parámetro 'ventana' de la URL
+    let ventana = getParameterByName('ventana') || 'MDLS-01';
+
+    // Cargar lista de ventanas válidas desde el JSON
+    fetch('lista-ventanas.json')
+        .then(response => response.json())
+        .then(listaVentanas => {
+            // Si la ventana no está en la lista, recargar la página con 'MDLS-01'
+            if (!listaVentanas.includes(ventana)) {
+                window.location.href = window.location.pathname + '?ventana=MDLS-01';
+                return; // Detener la ejecución del script aquí
+            }
+
+            // Aplicar el valor validado al título y al header
+            document.title = ventana;
+            document.getElementById('header-title').innerText = ventana;
+        })
+        .catch(error => console.error('Error cargando lista de ventanas:', error));
+
+
+
+    const pathToFiles = `image-processing/img_procesadas/${ventana}/`;
+
+    const chronobarBox = document.getElementById('chronobar');
+    chronobarBox.date = chronobarBox.querySelector('.date');
+    chronobarBox.autor = chronobarBox.querySelector('.autor');
+    chronobarBox.pics = chronobarBox.querySelector('.pics');
+    chronobarBox.bar = chronobarBox.querySelector('.time-bar');
+    chronobarBox.bar.track = chronobarBox.bar.querySelector('.time-track');
+
+    let dates = [], picObjs = [], marks = [];
+
+    fetch(pathToFiles + 'lista-imagenes.json')
+    .then(response => response.json())
+    .then(piclist => {
+      piclist.forEach((picname, idx) => {
+        let [dateStr, author] = picname.split('_');
+        let dateObj = new Date(dateStr);
+        if (isNaN(dateObj) || dates.includes(dateStr)) return;
+        dates.push(dateStr);
+        let pic = document.createElement('img');
+        pic.src = pathToFiles + picname;
+        pic.picAuthor = author.split('.')[0];
+        pic.picDate = dateObj; pic.picDateStr = dateStr;
+        if (idx !== 0) pic.classList.add('disabled');
+        picObjs.push(pic);
+      });
+
+      picObjs.sort((a, b) => a.picDate - b.picDate);
+      chronobarBox.date.innerText = picObjs[0].picDateStr;
+      chronobarBox.autor.innerText = picObjs[0].picAuthor;
+
+      let init = picObjs[0].picDate, end = picObjs[picObjs.length - 1].picDate;
+      let days = Math.round((end - init) / (24 * 60 * 60 * 1000));
+
+      picObjs.forEach((obj) => {
+        let mark = document.createElement('mark');
+        mark.classList.add('time-mark');
+        mark.left = ((obj.picDate - init) / (24 * 60 * 60 * 1000)) / days * 100;
+        mark.style.left = mark.left + '%';
+        obj.mark = mark; mark.pic = obj; marks.push(mark);
+        chronobarBox.bar.appendChild(mark);
+        chronobarBox.pics.appendChild(obj);
+      });
+    })
+    .catch(error => console.error('Error loading images:', error));
+
+    let runningEv = null;
+    function togglePower() {
+      if (runningEv) {
+        clearInterval(runningEv);
+        runningEv = null;
+      } else {
+        runningEv = setInterval(() => {
+          let active = chronobarBox.pics.querySelector(':not(.disabled)');
+          let nextPic = active.nextElementSibling || active.parentElement.firstElementChild;
+          nextPic.classList.toggle('disabled');
+          active.classList.toggle('disabled');
+          chronobarBox.bar.track.style.width = nextPic.mark.style.left;
+          chronobarBox.date.innerText = nextPic.picDateStr;
+          chronobarBox.autor.innerText = nextPic.picAuthor;
+        }, 1000);
+      }
+    }
+
+    chronobarBox.querySelector('.control-bttn').onclick = function() {
+      this.firstElementChild.classList.toggle('paused');
+      togglePower();
+    }
+
+    let isDragging = false;
+    function closestMark(percentage) {
+      return marks.reduce((prev, curr) => Math.abs(curr.left - percentage) < Math.abs(prev.left - percentage) ? curr : prev);
+    }
+
+    function changeTimeBar(newX = 0) {
+      const box = chronobarBox.bar.getBoundingClientRect();
+      const percentage = ((newX - box.left) / box.width) * 100;
+      let mark = closestMark(percentage);
+      chronobarBox.pics.querySelector(':not(.disabled)').classList.toggle('disabled');
+      mark.pic.classList.toggle('disabled');
+      chronobarBox.bar.track.style.width = mark.style.left;
+      chronobarBox.date.innerText = mark.pic.picDateStr;
+      chronobarBox.autor.innerText = mark.pic.picAuthor;
+    }
+
+    chronobarBox.bar.addEventListener('mousedown', (ev) => { isDragging = true; ev.preventDefault(); });
+    document.addEventListener('mousemove', (ev) => { if (isDragging) changeTimeBar(ev.clientX); });
+    document.addEventListener('mouseup', () => { isDragging = false; });
+  </script>
+</body>
+</html>
